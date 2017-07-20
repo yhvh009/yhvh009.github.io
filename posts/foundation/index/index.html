@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>Foundation · 阳光夜风</title><meta name="description" content="访问基本数据类型，集合（collections），和操作系统服务以定义应用程序的基本功能层。
+
+SDKsiOS 2.0+macOS 10.0+tvOS 9.0+watchOS 2.0+  
+
+
+概览Foundation框架提供了应用程序的基本功能层以及frameworks，数据存储及持久化，文本处理"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Foundation</a></h3></div><div class="post-content"><p>访问基本数据类型，集合（collections），和操作系统服务以定义应用程序的基本功能层。</p>
+<blockquote>
+<h6 id="SDKs"><a href="#SDKs" class="headerlink" title="SDKs"></a>SDKs</h6><p>iOS 2.0+<br>macOS 10.0+<br>tvOS 9.0+<br>watchOS 2.0+  </p>
+</blockquote>
+<hr>
+<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>Foundation框架提供了应用程序的基本功能层以及frameworks，数据存储及持久化，文本处理，日期及时间运算，分类及过滤，以及网络处理。Foundation定义的这些类（classes），协议（protocols）以及数据类型被用来贯穿macOS，iOS，watchOS和tvOS SDKs。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><blockquote>
+<p><a href="../numbers_data_and_basic_values">数字（Numbers）, 数据（Data）, 和基本值（Basic Values）</a></p>
+<p>使用原始数据类型及其他基础类型贯穿整个Cocoa。</p>
+<p><a href="../strings_and_text">字符串（Strings）及文本（Text）</a></p>
+<p>创建和处理Unicode字符，使用正则表达式查找模式（patterns），以及进行文本的自然语言分析。</p>
+<p><a href="../collections">集合（Collections）</a></p>
+<p>使用数组（arrays），字典（dictionaries），集合（sets），和专门的集合来存储跟迭代（iterate）一组对象（Objects）或者值（Values）。</p>
+<p><a href="../dates_and_times">日期（Dates）和时间（Times）</a></p>
+<p>比较日期和时间，以及进行日历和时区的运算。</p>
+<p><a href="../units_and_measurement">单位（Units）和度量（Measurement）</a></p>
+<p>使用物理尺寸标注数字数量，以便允许在相关单位之间进行本地化（locale-aware）的格式化和转换。<br>Label numeric quantities with physical dimensions to allow locale-aware formatting and conversion between related units.</p>
+<p><a href="../data_formatting">数据格式化（Data Formatting）</a></p>
+<p>在数字，日期，度量（measurements）以及其他值与本地化（locale-aware）字符串表达式（string representations）之间进行相互转化。</p>
+<p><a href="../filters_and_sorting">过滤（Filters）和排序（Sorting）</a></p>
+<p>使用谓词（predicates），表达式（expressions）和排序描述式（sort descriptors）来检测在集合（collections）以及其他服务中的元素。</p>
+</blockquote>
+<hr>
+<h4 id="应用程序支持"><a href="#应用程序支持" class="headerlink" title="应用程序支持"></a>应用程序支持</h4><blockquote>
+<p><a href="../task_management">任务管理（Task Management）</a></p>
+<p>管理你应用程序的工作以及它们与用户和系统之间的交互。</p>
+<p><a href="../resources">资源（Resources）</a></p>
+<p>访问你应用程序绑定（bundled）的assets和其他数据。</p>
+<p><a href="../notifications">通知（Notifications）</a></p>
+<p>设计广播消息及订阅广播的模式</p>
+<p><a href="../app_extension_support">应用程序拓展（Extension）支持</a></p>
+<p>管理应用程序拓展跟它的主程序（hosting app）之间的交互。</p>
+<p><a href="../errors_and_exceptions">错误（Errors）及异常（Exceptions）</a></p>
+<p>响应你在api交互中产生的问题情况，微调你的应用以便更好的调试。</p>
+<p><a href="../scripting_support">脚本支持（Scripting Support）</a></p>
+<p>允许用户使用AppleScript和其他自动化技术来控制你的应用，或者在你的应用中运行脚本（scripts）。</p>
+</blockquote>
+<hr>
+<h4 id="文件及数据持久化"><a href="#文件及数据持久化" class="headerlink" title="文件及数据持久化"></a>文件及数据持久化</h4><blockquote>
+<p><a href="../file_system">文件系统</a></p>
+<p>在文件系统中创建，读取，写入以及检查文件跟文件夹。</p>
+<p><a href="../archives_and_serialization">归档（Archives）和序列化（Serialization）</a></p>
+<p>在对象（objects），值（values）与property list，JSON及其他扁平的二进制表现形式（flat binary representations）之间相互转化。</p>
+<p>配置（Preferences）</p>
+<p>持久化保存用来设置（configure）你的应用的域名范围（domain-scoped）内的若干信息。</p>
+<p>Spotlight</p>
+<p>搜索本地设备内的文件及其他内容，以及建立你用来搜索的应用内容的索引。</p>
+<p>iCloud</p>
+<p>管理通过用户的iCloud设备来自动同步的文件及键值对（key-value）数据。</p>
+</blockquote>
+<hr>
+<h4 id="网络（Networking）"><a href="#网络（Networking）" class="headerlink" title="网络（Networking）"></a>网络（Networking）</h4><blockquote>
+<p>URL加载系统（URL Loading System）</p>
+<p>使用标准Internet协议与URL进行交互及与服务端通信。</p>
+<p>Bonjour</p>
+<p>本地网络上容易发现的广告服务，或者发现其他人的广告服务。<br>Advertise services for easy discovery on local networks, or discover services advertised by others.</p>
+</blockquote>
+<hr>
+<h4 id="底层工具（Low-Level-Utilities）"><a href="#底层工具（Low-Level-Utilities）" class="headerlink" title="底层工具（Low-Level Utilities）"></a>底层工具（Low-Level Utilities）</h4><blockquote>
+<p>XPC</p>
+<p>管理进程间的安全通信。</p>
+<p>Object Runtime</p>
+<p>获取Object-C特性，Cocoa设计模式以及Swift一体化的底层支持。</p>
+<p>进程（Processes）与线程（Threads）</p>
+<p>管理你应用与主操作系统及其他进程之间的交互，以及实现底层并发特性（low-level concurrency features）。</p>
+<p>流（Streams），Sockets和端口（Ports）</p>
+<p>使用底层Unix特性来管理文件，进程及网络的输入和输出。</p>
+</blockquote>
+<hr>
+<h4 id="结构体（Structures）"><a href="#结构体（Structures）" class="headerlink" title="结构体（Structures）"></a>结构体（Structures）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSFileProviderServiceName</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSTextCheckingKey</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="类（Classes）"><a href="#类（Classes）" class="headerlink" title="类（Classes）"></a>类（Classes）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSFileProviderService</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="参考（Reference）"><a href="#参考（Reference）" class="headerlink" title="参考（Reference）"></a>参考（Reference）</h4><blockquote>
+<p>Foundation常量（Constants）</p>
+<p>Foundation数据类型</p>
+<p>此文档描述Foundation框架中出现的数据类型及常量。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-07</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/foundation/index/,阳光夜风,Foundation,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/numbers_data_and_basic_values/" title="数字（Numbers）, 数据（Data）, 和基本值（Basic Values）">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/Apple Foundation官方文档中文翻译计划/" title="Apple Foundation官方文档中文翻译计划">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

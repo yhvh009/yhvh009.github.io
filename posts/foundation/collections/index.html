@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>集合（Collections） · 阳光夜风</title><meta name="description" content="使用数组（arrays），字典（dictionaries），集合（sets），和专门的集合来存储跟迭代（iterate）一组对象（Objects）或者值（Values）。
+
+主题
+基本集合1struct Array
+一个有序的随机访问（random-access）集合。
+1struct Dictio"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>集合（Collections）</a></h3></div><div class="post-content"><p>使用数组（arrays），字典（dictionaries），集合（sets），和专门的集合来存储跟迭代（iterate）一组对象（Objects）或者值（Values）。</p>
+<hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="基本集合"><a href="#基本集合" class="headerlink" title="基本集合"></a>基本集合</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct Array</div></pre></td></tr></table></figure>
+<p>一个有序的随机访问（random-access）集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct Dictionary</div></pre></td></tr></table></figure>
+<p>一个元素是键值对的集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct Set</div></pre></td></tr></table></figure>
+<p>一个无序的唯一元素集合。</p>
+<hr>
+<h4 id="索引（Indexes）"><a href="#索引（Indexes）" class="headerlink" title="索引（Indexes）"></a>索引（Indexes）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct IndexPath</div></pre></td></tr></table></figure>
+<p>一组索引的列表，一起来表示一个嵌套数组（nested arrays）的树中的一个特定位置的路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct IndexSet</div></pre></td></tr></table></figure>
+<p>一组唯一整型值的集合，以表示另一个集合中的元素的索引。</p>
+<hr>
+<h4 id="专有集合（Specialized-Sets）"><a href="#专有集合（Specialized-Sets）" class="headerlink" title="专有集合（Specialized Sets）"></a>专有集合（Specialized Sets）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCountedSet</div></pre></td></tr></table></figure>
+<p>一个不同对象的可变的无序集合，这些对象可能在集合中出现不止一次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSOrderedSet</div></pre></td></tr></table></figure>
+<p>一个唯一对象的静态有序集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMutableOrderedSet</div></pre></td></tr></table></figure>
+<p>一个唯一对象的动态有序集合。</p>
+<hr>
+<h4 id="可清除集合（Purgeable-Collections）"><a href="#可清除集合（Purgeable-Collections）" class="headerlink" title="可清除集合（Purgeable Collections）"></a>可清除集合（Purgeable Collections）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCache</div></pre></td></tr></table></figure>
+<p>一个可变的集合，你用来临时存储一些当资源紧张时可被回收的短时的键值对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSPurgeableData</div></pre></td></tr></table></figure>
+<p>一个包含字节的可变数据对象，当它们不再被使用时可以被丢弃。</p>
+<hr>
+<h4 id="指针集合（Pointer-Collections）-lt-sup1-lt-sup"><a href="#指针集合（Pointer-Collections）-lt-sup1-lt-sup" class="headerlink" title="指针集合（Pointer Collections）&lt;sup1&lt;/sup"></a>指针集合（Pointer Collections）&lt;sup1&lt;/sup</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSPointerArray</div></pre></td></tr></table></figure>
+<p>一类类似于数组的集合，但有着更广泛的可用内存语义&lt;sup2&lt;/sup。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMapTable</div></pre></td></tr></table></figure>
+<p>一个类似于字典（dictionary）的集合，但有着更广泛的可用内存语义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class NSHashTable</div></pre></td></tr></table></figure></p>
+<p>一个类似于 set 的集合，但有着更广泛的可用内存语义。</p>
+<hr>
+<h4 id="迭代（Iteration）"><a href="#迭代（Iteration）" class="headerlink" title="迭代（Iteration）"></a>迭代（Iteration）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSEnumerator</div></pre></td></tr></table></figure>
+<p>一个抽象类，其子类用来枚举对象的集合，如数组和字典。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSFastEnumeration</div></pre></td></tr></table></figure>
+<p>一个使对象适于快速枚举的协议（protocol）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSFastEnumerationIterator</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSIndexSetIterator</div></pre></td></tr></table></figure>
+<p>一个适用于枚举索引集合（index set）中元素的迭代器（iterator）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSEnumerationOptions</div></pre></td></tr></table></figure>
+<p>枚举操作块（block enumeration operations）的选项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct NSSortOptions</div></pre></td></tr></table></figure>
+<p>排序操作块（block sorting operations）的选项。</p>
+<hr>
+<h4 id="特殊语义值（Special-Semantic-Values）"><a href="#特殊语义值（Special-Semantic-Values）" class="headerlink" title="特殊语义值（Special Semantic Values）"></a>特殊语义值（Special Semantic Values）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSNull</div></pre></td></tr></table></figure>
+<p>一个单例对象（singleton object）用来表示集合对象中不允许 nil 值的空值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let NSNotFound: Int</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let NSNotFound: Int</div></pre></td></tr></table></figure>
+<p>一个用来表示一个请求项不能被找到或者不存在的值。</p>
+<hr>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><blockquote>
+<p><a href="../numbers_data_and_basic_values">数字（Numbers）, 数据（Data）, 和基本值（Basic Values）</a></p>
+<p>使用原始数据类型及其他基础类型贯穿整个Cocoa。</p>
+<p><a href="../strings_and_text">字符串（Strings）及文本（Text）</a></p>
+<p>创建和处理Unicode字符，使用正则表达式查找模式（patterns），以及进行文本的自然语言分析。</p>
+<p><a href="../collections">集合（Collections）</a></p>
+<p>使用数组（arrays），字典（dictionaries），集合（sets），和专门的集合来存储跟迭代（iterate）一组对象（Objects）或者值（Values）。</p>
+<p><a href="../dates_and_times">日期（Dates）和时间（Times）</a></p>
+<p>比较日期和时间，以及进行日历和时区的运算。</p>
+<p><a href="../units_and_measurement">单位（Units）和度量（Measurement）</a></p>
+<p>使用物理尺寸标注数字数量，以便允许在相关单位之间进行本地化（locale-aware）的格式化和转换。<br>Label numeric quantities with physical dimensions to allow locale-aware formatting and conversion between related units.</p>
+<p><a href="../data_formatting">数据格式化（Data Formatting）</a></p>
+<p>在数字，日期，度量（measurements）以及其他值与本地化（locale-aware）字符串表达式（string representations）之间进行相互转化。</p>
+<p><a href="../filters_and_sorting">过滤（Filters）和排序（Sorting）</a></p>
+<p>使用谓词（predicates），表达式（expressions）和排序描述式（sort descriptors）来检测在集合（collections）以及其他服务中的元素。</p>
+</blockquote>
+<hr>
+<h4 id="1-这个不知道通用的中文名称是什么，很少接触这个名称，如果大家有更正式的叫法可以告诉我。"><a href="#1-这个不知道通用的中文名称是什么，很少接触这个名称，如果大家有更正式的叫法可以告诉我。" class="headerlink" title="1. 这个不知道通用的中文名称是什么，很少接触这个名称，如果大家有更正式的叫法可以告诉我。"></a>1. 这个不知道通用的中文名称是什么，很少接触这个名称，如果大家有更正式的叫法可以告诉我。</h4><h4 id="2-这里原文是-with-a-broader-range-of-available-memory-semantics-不太清楚具体意思。"><a href="#2-这里原文是-with-a-broader-range-of-available-memory-semantics-不太清楚具体意思。" class="headerlink" title="2. 这里原文是 with a broader range of available memory semantics 不太清楚具体意思。"></a>2. 这里原文是 with a broader range of available memory semantics 不太清楚具体意思。</h4></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-07</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/foundation/collections/,阳光夜风,集合（Collections）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/dates_and_times/" title="日期和时间">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/strings_and_text/" title="字符串（Strings）及文本（Text）">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>错误（Errors）及异常（Exceptions） · 阳光夜风</title><meta name="description" content="响应你在api交互中产生的问题情况，微调你的应用以便更好的调试。
+
+主题
+用户相关错误（User-Relevant Errors）1protocol Error
+表示一个可以被抛出的错误值的类型。
+1class NSError
+关于错误情况的信息包括域名（domain），特定域的错误码（domain"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>错误（Errors）及异常（Exceptions）</a></h3></div><div class="post-content"><p>响应你在api交互中产生的问题情况，微调你的应用以便更好的调试。</p>
+<hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="用户相关错误（User-Relevant-Errors）"><a href="#用户相关错误（User-Relevant-Errors）" class="headerlink" title="用户相关错误（User-Relevant Errors）"></a>用户相关错误（User-Relevant Errors）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol Error</div></pre></td></tr></table></figure>
+<p>表示一个可以被抛出的错误值的类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSError</div></pre></td></tr></table></figure>
+<p>关于错误情况的信息包括域名（domain），特定域的错误码（domain-specific error code），和特定应用信息（application-specific information）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol LocalizedError</div></pre></td></tr></table></figure>
+<p>一个专门的错误，提供本地化的信息来描述错误和它为什么产生。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol RecoverableError</div></pre></td></tr></table></figure>
+<p>一个可能恢复的专门的错误，通过展示一些潜在的恢复选项给用户。（A specialized error that may be recoverable by presenting several potential recovery options to the user.）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol CustomNSError</div></pre></td></tr></table></figure>
+<p>一个提供域名（domain），错误码（error code）和用户信息字典（user-info dictionary）的专门的错误。</p>
+<hr>
+<h4 id="断言（Assertions）"><a href="#断言（Assertions）" class="headerlink" title="断言（Assertions）"></a>断言（Assertions）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSAssertionHandler</div></pre></td></tr></table></figure>
+<p>一个在控制台（console）中展示断言（assertion）的日志（log）的对象。</p>
+<hr>
+<h4 id="异常（Exceptions）"><a href="#异常（Exceptions）" class="headerlink" title="异常（Exceptions）"></a>异常（Exceptions）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSException</div></pre></td></tr></table></figure>
+<p>一个对象，展示打断（interrupts）正常的程序执行流（normal flow of program execution）的一个特殊情况（special condition）。</p>
+<hr>
+<h4 id="诊断及调试（Diagnostics-and-Debugging）"><a href="#诊断及调试（Diagnostics-and-Debugging）" class="headerlink" title="诊断及调试（Diagnostics and Debugging）"></a>诊断及调试（Diagnostics and Debugging）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func NSLogv(String, CVaListPointer)</div></pre></td></tr></table></figure>
+<p>记录一个错误信息（error message）的日志到苹果系统日志设施（Apple System Log facility）中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">func NSLog(String, CVarArg...)</div></pre></td></tr></table></figure>
+<p>记录一个错误信息（error message）的日志到苹果系统日志设施（Apple System Log facility）中。</p>
+<hr>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="应用程序支持"><a href="#应用程序支持" class="headerlink" title="应用程序支持"></a>应用程序支持</h4><blockquote>
+<p><a href="../task_management">任务管理（Task Management）</a></p>
+<p>管理你应用程序的工作以及它们与用户和系统之间的交互。</p>
+<p><a href="../resources">资源（Resources）</a></p>
+<p>访问你应用程序绑定（bundled）的assets和其他数据。</p>
+<p><a href="../notifications">通知（Notifications）</a></p>
+<p>设计广播消息及订阅广播的模式</p>
+<p><a href="../app_extension_support">应用程序拓展（Extension）支持</a></p>
+<p>管理应用程序拓展跟它的主程序（hosting app）之间的交互。</p>
+<p><a href="../errors_and_exceptions">错误（Errors）及异常（Exceptions）</a></p>
+<p>响应你在api交互中产生的问题情况，微调你的应用以便更好的调试。</p>
+<p><a href="../scripting_support">脚本支持（Scripting Support）</a></p>
+<p>允许用户使用AppleScript和其他自动化技术来控制你的应用，或者在你的应用中运行脚本（scripts）。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-14</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/foundation/errors_and_exceptions/,阳光夜风,错误（Errors）及异常（Exceptions）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/scripting_support/" title="脚本支持（Scripting Support）">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/app_extension_support/" title="应用程序拓展（Extension）支持">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>脚本支持（Scripting Support） · 阳光夜风</title><meta name="description" content="允许用户使用AppleScript和其他自动化技术来控制你的应用，或者在你的应用中运行脚本（scripts）。
+
+主题
+脚本执行（Script Execution）1class NSAppleScript
+一个提供加载（load），编译（compile）和执行（execute）脚本的能力的对象。
+
+"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>脚本支持（Scripting Support）</a></h3></div><div class="post-content"><p>允许用户使用AppleScript和其他自动化技术来控制你的应用，或者在你的应用中运行脚本（scripts）。</p>
+<hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="脚本执行（Script-Execution）"><a href="#脚本执行（Script-Execution）" class="headerlink" title="脚本执行（Script Execution）"></a>脚本执行（Script Execution）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSAppleScript</div></pre></td></tr></table></figure>
+<p>一个提供加载（load），编译（compile）和执行（execute）脚本的能力的对象。</p>
+<hr>
+<h4 id="苹果事件处理（Apple-Event-Handling）"><a href="#苹果事件处理（Apple-Event-Handling）" class="headerlink" title="苹果事件处理（Apple Event Handling）"></a>苹果事件处理（Apple Event Handling）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSAppleEventDescriptor</div></pre></td></tr></table></figure>
+<p>一个苹果事件描述符（Apple event descriptor）数据类型的包装（wrapper）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSAppleEventManager</div></pre></td></tr></table></figure>
+<p>一套机制，给苹果事件的特定类型注册处理惯例，以及分发事件到这些控制器。（A mechanism for registering handler routines for specific types of Apple events and dispatching events to those handlers.）</p>
+<hr>
+<h4 id="脚本命令（Script-Commands）"><a href="#脚本命令（Script-Commands）" class="headerlink" title="脚本命令（Script Commands）"></a>脚本命令（Script Commands）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptCommand</div></pre></td></tr></table></figure>
+<p>一个自包含（self-contained）的脚本声明（statement）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSQuitCommand</div></pre></td></tr></table></figure>
+<p>一个退出特定应用的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSSetCommand</div></pre></td></tr></table></figure>
+<p>一个设置一或多个属性（attributes）或关系到一或多个值（values）的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMoveCommand</div></pre></td></tr></table></figure>
+<p>一个移动一或多个可编写脚本（scriptable）对象的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCreateCommand</div></pre></td></tr></table></figure>
+<p>一个创建一个可编写脚本对象的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSDeleteCommand</div></pre></td></tr></table></figure>
+<p>一个删除一个可编写脚本对象的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSExistsCommand</div></pre></td></tr></table></figure>
+<p>一个确定一个可编写脚本对象是否存在的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCloneCommand</div></pre></td></tr></table></figure>
+<p>一个克隆（clone）一或多个可编写脚本对象的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCountCommand</div></pre></td></tr></table></figure>
+<p>一个用于计算指定对象容器中指定类的对象数的命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSCloseCommand</div></pre></td></tr></table></figure>
+<p>一个关闭一或多个可编写脚本对象的命令。</p>
+<hr>
+<h4 id="对象说明符（Object-Specifiers）"><a href="#对象说明符（Object-Specifiers）" class="headerlink" title="对象说明符（Object Specifiers）"></a>对象说明符（Object Specifiers）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptObjectSpecifier</div></pre></td></tr></table></figure>
+<p>一个用于展示自然语言表达式（natural language expressions）的抽象类（abstract class）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSPropertySpecifier</div></pre></td></tr></table></figure>
+<p>一个用于简单属性值，一对一关系或多对象关系的所有元素的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSPositionalSpecifier</div></pre></td></tr></table></figure>
+<p>一个用于容器中相对于容器中另一个对象的插入点的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSRandomSpecifier</div></pre></td></tr></table></figure>
+<p>一个对于集合中任意对象的说明符，如果不是一对多关系，则是唯一对象。（A specifier for an arbitrary object in a collection or, if not a one-to-many relationship, the sole object.）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSRangeSpecifier</div></pre></td></tr></table></figure>
+<p>一个用于在一个容器中的一个范围内的对象的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSUniqueIDSpecifier</div></pre></td></tr></table></figure>
+<p>一个通过unique ID，对在一个在集合（或容器）中的对象的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSWhoseSpecifier</div></pre></td></tr></table></figure>
+<p>一个用于指示在集合中符合条件的每个对象的说明符。（A specifier that indicates every object in a collection matching a condition.）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSNameSpecifier</div></pre></td></tr></table></figure>
+<p>一个通过名字，对在一个集合（或容器）中的对象的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMiddleSpecifier</div></pre></td></tr></table></figure>
+<p>一个对于在集合中中间的对象的说明符，如果不是一对多关系，则是唯一对象。（A specifier indicating the middle object in a collection or, if not a one-to-many relationship, the sole object.）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSIndexSpecifier</div></pre></td></tr></table></figure>
+<p>一个表示具有索引号的集合（或容器）中的对象的说明符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSRelativeSpecifier</div></pre></td></tr></table></figure>
+<p>一个指示符，通过其相对于另一个对象的位置来指示集合中的对象。</p>
+<hr>
+<h4 id="脚本字典描述符（Script-Dictionary-Description）"><a href="#脚本字典描述符（Script-Dictionary-Description）" class="headerlink" title="脚本字典描述符（Script Dictionary Description）"></a>脚本字典描述符（Script Dictionary Description）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptSuiteRegistry</div></pre></td></tr></table></figure>
+<p>一个应用在运行时（runtime）的关于脚本语言信息（scriptability information）的最高级库（top-level repository）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptClassDescription</div></pre></td></tr></table></figure>
+<p>一个macOS应用支持的可编写脚本类（scriptable class）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSClassDescription</div></pre></td></tr></table></figure>
+<p>一个抽象类，提供接口支持查询一个类的关系（relationships）或属性（properties）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptCommandDescription</div></pre></td></tr></table></figure>
+<p>一个macOS应用支持的脚本命令。</p>
+<hr>
+<h4 id="对象匹配测试（Object-Matching-Tests）"><a href="#对象匹配测试（Object-Matching-Tests）" class="headerlink" title="对象匹配测试（Object Matching Tests）"></a>对象匹配测试（Object Matching Tests）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptWhoseTest</div></pre></td></tr></table></figure>
+<p>一个抽象类，它提供了一次一个或一组地测试说明符的基础。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSSpecifierTest</div></pre></td></tr></table></figure>
+<p>一个对象说明符跟一个测试对象之间的比较关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSLogicalTest</div></pre></td></tr></table></figure>
+<p>一个一或多个说明符测试直接的逻辑组合（logical combination）。</p>
+<hr>
+<h4 id="NSObject脚本支持（Script-Support）"><a href="#NSObject脚本支持（Script-Support）" class="headerlink" title="NSObject脚本支持（Script Support）"></a>NSObject脚本支持（Script Support）</h4><p><strong>NSComparisonMethods</strong></p>
+<p>一个用于执行说明符测试的默认比较方法的集合。</p>
+<p><strong>NSScriptingComparisonMethods</strong></p>
+<p>一个用于比较脚本对象的方法的集合。</p>
+<p><strong>NSScriptKeyValueCoding</strong></p>
+<p>一个提供附加能力的方法集合，用于处理键值对编码（key-value coding）。</p>
+<p><strong>NSScriptObjectSpecifiers</strong></p>
+<p>一个提供附加对象说明符功能的方法集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptCoercionHandler</div></pre></td></tr></table></figure>
+<p>一套转化一类脚本对象到另一类的机制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSScriptExecutionContext</div></pre></td></tr></table></figure>
+<p>当前执行的脚本命令的上下文（context）。</p>
+<hr>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="应用程序支持"><a href="#应用程序支持" class="headerlink" title="应用程序支持"></a>应用程序支持</h4><blockquote>
+<p><a href="../task_management">任务管理（Task Management）</a></p>
+<p>管理你应用程序的工作以及它们与用户和系统之间的交互。</p>
+<p><a href="../resources">资源（Resources）</a></p>
+<p>访问你应用程序绑定（bundled）的assets和其他数据。</p>
+<p><a href="../notifications">通知（Notifications）</a></p>
+<p>设计广播消息及订阅广播的模式</p>
+<p><a href="../app_extension_support">应用程序拓展（Extension）支持</a></p>
+<p>管理应用程序拓展跟它的主程序（hosting app）之间的交互。</p>
+<p><a href="../errors_and_exceptions">错误（Errors）及异常（Exceptions）</a></p>
+<p>响应你在api交互中产生的问题情况，微调你的应用以便更好的调试。</p>
+<p><a href="../scripting_support">脚本支持（Scripting Support）</a></p>
+<p>允许用户使用AppleScript和其他自动化技术来控制你的应用，或者在你的应用中运行脚本（scripts）。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-16</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/foundation/scripting_support/,阳光夜风,脚本支持（Scripting Support）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/file_system/" title="文件系统">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/errors_and_exceptions/" title="错误（Errors）及异常（Exceptions）">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
