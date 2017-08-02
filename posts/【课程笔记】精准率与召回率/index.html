@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>【课程笔记】精准率与召回率及F1分数 · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="精准率跟召回率的定义跟原理就不赘述了，这里主要还是加深一下对这两个值的理解。还是先上公式：$精准率：$
+
+precision = \frac{True Positive}{True Positive + False Positive}$召回率：$
+
+recall = \frac{True Posit"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>【课程笔记】精准率与召回率及F1分数</a></h3></div><div class="post-content"><p>精准率跟召回率的定义跟原理就不赘述了，这里主要还是加深一下对这两个值的理解。<br>还是先上公式：<br>$精准率：$</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="math/tex; mode=display">
+precision = \frac{True Positive}{True Positive + False Positive}</script><p>$召回率：$</p>
+<script type="math/tex; mode=display">
+recall = \frac{True Positive}{True Positive + False Negative}</script><p>从公式可以看出来，精准率对 False Positive 敏感，也就是对“错杀”敏感，所以精准率追求的是尽可能每个Positive都是正确的，宁可放过也不错杀；<br>而召回率对 False Negative 敏感，也就是对“放过”敏感，所以召回率衡量的是有多少Positive遗漏掉了，宁可错杀也不放过。</p>
+<h4 id="F1-Score"><a href="#F1-Score" class="headerlink" title="F1 Score"></a>F1 Score</h4><p>F1 Score是基于精准率跟召回率的一个模型表现分数，是F<sub>β</sub>的一种（β=1）。</p>
+<script type="math/tex; mode=display">
+F_β = (1+β^2)* \frac{precision*recall}{β^2*precision + recall}</script><p>所以F1即为</p>
+<script type="math/tex; mode=display">
+F1 = 2 * \frac{precision*recall}{precision+recall}</script><p>F<sub>β</sub>的平衡精准率与召回率之间重要性的指标。F1表示两者相同重要，F2则是召回率的重要程度是精准率的2倍，F0.5则相反，认为精准率的重要程度是召回率的2倍。</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-22</span><i class="fa fa-tag"></i><a class="tag" href="/categories/ml/" title="ml">ml </a><a class="tag" href="/tags/机器学习/" title="机器学习">机器学习 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/【课程笔记】精准率与召回率/,阳光夜风,【课程笔记】精准率与召回率及F1分数,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/foundation/配置/" title="配置（Preferences）">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/【课程笔记】异常值/" title="【课程笔记】异常值">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body></html>
