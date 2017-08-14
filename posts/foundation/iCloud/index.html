@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>iCloud · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="管理通过用户的iCloud设备来自动同步的文件及键值对（key-value）数据。
+
+主题
+iCloud 存储 (iCloud Storage)1class FileManager
+一个给文件系统中的内容提供方便接口的对象。
+1protocol FileManagerDelegate
+文件管理器（F"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>iCloud</a></h3></div><div class="post-content"><p>管理通过用户的iCloud设备来自动同步的文件及键值对（key-value）数据。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="iCloud-存储-iCloud-Storage"><a href="#iCloud-存储-iCloud-Storage" class="headerlink" title="iCloud 存储 (iCloud Storage)"></a>iCloud 存储 (iCloud Storage)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class FileManager</div></pre></td></tr></table></figure>
+<p>一个给文件系统中的内容提供方便接口的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol FileManagerDelegate</div></pre></td></tr></table></figure>
+<p>文件管理器（File Manager）的代理（delegate）用来在操作期间（during operations）或有错误发生时进行干预的接口。</p>
+<hr>
+<h4 id="应用设置（App-Preferences）"><a href="#应用设置（App-Preferences）" class="headerlink" title="应用设置（App Preferences）"></a>应用设置（App Preferences）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSUbiquitousKeyValueStore</div></pre></td></tr></table></figure>
+<p>用于在用户连接的设备上运行的应用程序之间共享数据的基于iCloud的键值对容器。</p>
+<hr>
+<h4 id="文件搜索（File-Search）"><a href="#文件搜索（File-Search）" class="headerlink" title="文件搜索（File Search）"></a>文件搜索（File Search）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMetadataQuery</div></pre></td></tr></table></figure>
+<p>一个对Spotlight元数据执行的查询（query）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSMetadataQueryDelegate</div></pre></td></tr></table></figure>
+<p>一个允许元数据查询的代理（delegate）提供替代（substitute）结果或属性的接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSMetadataItem</div></pre></td></tr></table></figure>
+<p>文件相关的元数据。</p>
+<hr>
+<h4 id="错误（Errors）"><a href="#错误（Errors）" class="headerlink" title="错误（Errors）"></a>错误（Errors）</h4><blockquote>
+<p>iCloud 错误码（Error Codes）</p>
+<p>出现iCloud相关错误时出现错误代码。</p>
+</blockquote>
+<hr>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="文件及数据持久化"><a href="#文件及数据持久化" class="headerlink" title="文件及数据持久化"></a>文件及数据持久化</h4><blockquote>
+<p><a href="../file_system">文件系统</a></p>
+<p>在文件系统中创建，读取，写入以及检查文件跟文件夹。</p>
+<p><a href="../archives_and_serialization">归档（Archives）和序列化（Serialization）</a></p>
+<p>在对象（objects），值（values）与property list，JSON及其他扁平的二进制表现形式（flat binary representations）之间相互转化。</p>
+<p><a href="../配置">配置（Preferences）</a></p>
+<p>持久化保存用来设置（configure）你的应用的域名范围（domain-scoped）内的若干信息。</p>
+<p><a href="../Spotlight">Spotlight</a></p>
+<p>搜索本地设备内的文件及其他内容，以及建立你用来搜索的应用内容的索引。</p>
+<p><a href="../iCloud">iCloud</a></p>
+<p>管理通过用户的iCloud设备来自动同步的文件及键值对（key-value）数据。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-14</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/posts/foundation/iCloud/,阳光夜风,iCloud,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/113-Path-Sum-II/" title="LeetCode &quot;113. Path Sum II&quot;">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
