@@ -520,3 +520,16 @@ dl dt {
     #fb_comments .c_content, #fb_comments .comment_body {
       margin-left: 57px;   }
 }
+
+.listing-tag {
+  font-size: 24px;
+  color: #666666;
+  font-weight: 600;
+  line-height: 2.2em;
+}
+.listing-category {
+  font-size: 24px;
+  color: #666666;
+  font-weight: 600;
+  line-height: 2.2em;
+}

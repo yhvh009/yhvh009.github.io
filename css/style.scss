@@ -483,6 +483,18 @@ a:hover, a:active {
 }
 
 
+.listing-tag {
+  font-size: 24px;
+  color: #666666;
+  font-weight: 600;
+  line-height: 2.2em;
+}
+.listing-category {
+  font-size: 24px;
+  color: #666666;
+  font-weight: 600;
+  line-height: 2.2em;
+}
 
 /*for archive*/
 .archive{
@@ -738,6 +750,7 @@ a.btn {
 
 }
 
+
 .page_404{
 	text-align:center;
 	padding-top:50px;
@@ -781,17 +794,4 @@ a.btn {
 		display: grid;
 	}
 
-}
-
-.listing-tag {
-  font-size: 24px;
-  color: #666666;
-  font-weight: 600;
-  line-height: 2.2em;
-}
-.listing-category {
-  font-size: 24px;
-  color: #666666;
-  font-weight: 600;
-  line-height: 2.2em;
 }
