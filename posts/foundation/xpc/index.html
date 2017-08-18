@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>XPC · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="管理进程间的安全通信。
+
+主题
+XPC 客户端（XPC Client）1protocol NSXPCProxyCreating
+创建新的代理（proxy）对象的方法。
+1class NSXPCConnection
+两个进程间的双向通信通道。
+1class NSXPCInterface
+一个可以发送到"><meta name="keywords" content="iOS, Apple Foundation, Machine Learning, Algorithm, LeetCode"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/categories/">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>XPC</a></h3></div><div class="post-content"><p>管理进程间的安全通信。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="XPC-客户端（XPC-Client）"><a href="#XPC-客户端（XPC-Client）" class="headerlink" title="XPC 客户端（XPC Client）"></a>XPC 客户端（XPC Client）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSXPCProxyCreating</div></pre></td></tr></table></figure>
+<p>创建新的代理（proxy）对象的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSXPCConnection</div></pre></td></tr></table></figure>
+<p>两个进程间的双向通信通道。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSXPCInterface</div></pre></td></tr></table></figure>
+<p>一个可以发送到导出对象（exported object）或远程对象代理（remote object proxy）的接口。</p>
+<hr>
+<h4 id="XPC-服务（XPC-Services）"><a href="#XPC-服务（XPC-Services）" class="headerlink" title="XPC 服务（XPC Services）"></a>XPC 服务（XPC Services）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSXPCListener</div></pre></td></tr></table></figure>
+<p>一个监听器，等待着新的连入连接，配置它们并且接受或拒绝它们。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSXPCListenerDelegate</div></pre></td></tr></table></figure>
+<p>XPC监听器的代理（delegates）用来接受或拒绝新连接的接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSXPCListenerEndpoint</div></pre></td></tr></table></figure>
+<p>命名一个特定XPC监听器的对象。</p>
+<hr>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="底层工具（Low-Level-Utilities）"><a href="#底层工具（Low-Level-Utilities）" class="headerlink" title="底层工具（Low-Level Utilities）"></a>底层工具（Low-Level Utilities）</h4><blockquote>
+<p><a href="../xpc">XPC</a></p>
+<p>管理进程间的安全通信。</p>
+<p>Object Runtime</p>
+<p>获取Object-C特性，Cocoa设计模式以及Swift一体化的底层支持。</p>
+<p>进程（Processes）与线程（Threads）</p>
+<p>管理你应用与主操作系统及其他进程之间的交互，以及实现底层并发特性（low-level concurrency features）。</p>
+<p>流（Streams），Sockets和端口（Ports）</p>
+<p>使用底层Unix特性来管理文件，进程及网络的输入和输出。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-18</span><i class="fa fa-comment-o"></i><a href="/posts/foundation/xpc/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://yhvh009.github.io/posts/foundation/xpc/,阳光夜风,XPC,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/301-Remove-Invalid-Parentheses/" title="LeetCode &quot;301. Remove Invalid Parentheses&quot;">下一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'yhvh009-github-io';
+var disqus_identifier = 'posts/foundation/xpc/';
+var disqus_title = 'XPC';
+var disqus_url = 'https://yhvh009.github.io/posts/foundation/xpc/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
