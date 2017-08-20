@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>对象运行时（Object Runtime） · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="获取Object-C特性，Cocoa设计模式以及Swift一体化的底层支持。
+
+主题
+对象基础1class NSObject
+大多数Objective-C类层级的根类，子类继承了运行时系统的基本接口以及表现为Objective-C对象的能力。
+1protocol NSObjectProtocol
+对"><meta name="keywords" content="iOS, Apple Foundation, Machine Learning, Algorithm, LeetCode"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/categories/">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>对象运行时（Object Runtime）</a></h3></div><div class="post-content"><p>获取Object-C特性，Cocoa设计模式以及Swift一体化的底层支持。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><hr>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><hr>
+<h4 id="对象基础"><a href="#对象基础" class="headerlink" title="对象基础"></a>对象基础</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSObject</div></pre></td></tr></table></figure>
+<p>大多数Objective-C类层级的根类，子类继承了运行时系统的基本接口以及表现为Objective-C对象的能力。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSObjectProtocol</div></pre></td></tr></table></figure>
+<p>对所有Objective-C对象都是基础的一组方法。</p>
+<blockquote>
+<p>NSKeyValueCoding</p>
+<p>使你能够直接通过名称或者key来获取一个对象的属性的机制。</p>
+</blockquote>
+<hr>
+<h4 id="拷贝（Copying）"><a href="#拷贝（Copying）" class="headerlink" title="拷贝（Copying）"></a>拷贝（Copying）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSCopying</div></pre></td></tr></table></figure>
+<p>对象采用的提供它们功能性拷贝的协议。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol NSMutableCopying</div></pre></td></tr></table></figure>
+<p>可变对象采用的提供它们功能性拷贝的协议。</p>
+<hr>
+<h4 id="值包装器和转换（Value-Wrappers-and-Transformations）"><a href="#值包装器和转换（Value-Wrappers-and-Transformations）" class="headerlink" title="值包装器和转换（Value Wrappers and Transformations）"></a>值包装器和转换（Value Wrappers and Transformations）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSNumber</div></pre></td></tr></table></figure>
+<p>一个原始标量数字值（primitive scalar numeric values）的包装器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSValue</div></pre></td></tr></table></figure>
+<p>单一的C或者Objective-C数据项的简单的容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class ValueTransformer</div></pre></td></tr></table></figure>
+<p>一个用来把值从一种表达转换为另一种的抽象类。</p>
+<hr>
+<h4 id="Swift-支持（Swift-Support）"><a href="#Swift-支持（Swift-Support）" class="headerlink" title="Swift 支持（Swift Support）"></a>Swift 支持（Swift Support）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol ReferenceConvertible</div></pre></td></tr></table></figure>
+<p>一个应用于由Foundation引用类型所支持的类型的装饰。</p>
+<blockquote>
+<p>Classes Bridged to Swift Standard Library Value Types</p>
+<p>使用桥接引用类型当你需要引用语义或者Foundation特定的行为时。（Use bridged reference types when you need reference semantics or Foundation-specific behavior.）</p>
+</blockquote>
+<hr>
+<h4 id="远程对象（Remote-Objects）"><a href="#远程对象（Remote-Objects）" class="headerlink" title="远程对象（Remote Objects）"></a>远程对象（Remote Objects）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class NSProxy</div></pre></td></tr></table></figure>
+<p>一个抽象超类，给那些表现为其他对象替身的对象或者尚不存在的对象们定义了一个API。（An abstract superclass defining an API for objects that act as stand-ins for other objects or for objects that don’t exist yet.）</p>
+<hr>
+<h4 id="内存管理（Memory-Management）"><a href="#内存管理（Memory-Management）" class="headerlink" title="内存管理（Memory Management）"></a>内存管理（Memory Management）</h4><blockquote>
+<p>Memory Management Functions</p>
+<p>执行低层级内存管理任务。</p>
+</blockquote>
+<hr>
+<h4 id="Objective-C运行时（Objective-C-Runtime）"><a href="#Objective-C运行时（Objective-C-Runtime）" class="headerlink" title="Objective-C运行时（Objective-C Runtime）"></a>Objective-C运行时（Objective-C Runtime）</h4><blockquote>
+<p>Objective-C运行时工具（Objective-C Runtime Utilities）</p>
+<p>与Objective-C运行时之间交互。</p>
+</blockquote>
+<hr>
+<h4 id="版本及API可用性（Versions-and-API-Availability）"><a href="#版本及API可用性（Versions-and-API-Availability）" class="headerlink" title="版本及API可用性（Versions and API Availability）"></a>版本及API可用性（Versions and API Availability）</h4><blockquote>
+<p>Foundation框架版本数字（Foundation Framework Version Numbers）</p>
+<p>识别用于比较当前运行的Foundation版本与已知操作系统版本号的常量。</p>
+</blockquote>
+<hr>
+<h4 id="遗留包袱（Legacy）"><a href="#遗留包袱（Legacy）" class="headerlink" title="遗留包袱（Legacy）"></a>遗留包袱（Legacy）</h4><blockquote>
+<p>分布式对象支持（Distributed Objects Support）</p>
+<p>使不同进程间的对象可以通信，本地或远程系统都可以。</p>
+<p>Objective-C垃圾回收（Objective-C Garbage Collection）</p>
+<h2 id="遗留的垃圾回收系统的接口。"><a href="#遗留的垃圾回收系统的接口。" class="headerlink" title="遗留的垃圾回收系统的接口。"></a>遗留的垃圾回收系统的接口。</h2></blockquote>
+<h3 id="参见"><a href="#参见" class="headerlink" title="参见"></a>参见</h3><hr>
+<h4 id="底层工具（Low-Level-Utilities）"><a href="#底层工具（Low-Level-Utilities）" class="headerlink" title="底层工具（Low-Level Utilities）"></a>底层工具（Low-Level Utilities）</h4><blockquote>
+<p><a href="../xpc">XPC</a></p>
+<p>管理进程间的安全通信。</p>
+<p><a href="../object_runtime">对象运行时（Object Runtime）</a></p>
+<p>获取Object-C特性，Cocoa设计模式以及Swift一体化的底层支持。</p>
+<p>进程（Processes）与线程（Threads）</p>
+<p>管理你应用与主操作系统及其他进程之间的交互，以及实现底层并发特性（low-level concurrency features）。</p>
+<p>流（Streams），Sockets和端口（Ports）</p>
+<p>使用底层Unix特性来管理文件，进程及网络的输入和输出。</p>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-20</span><i class="fa fa-comment-o"></i><a href="/posts/foundation/object_runtime/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/categories/Apple-Foundation中文文档/" title="Apple Foundation中文文档">Apple Foundation中文文档 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://yhvh009.github.io/posts/foundation/object_runtime/,阳光夜风,对象运行时（Object Runtime）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/Matrix-Chain-Multiplication/" title="Matrix Chain Multiplication">下一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'yhvh009-github-io';
+var disqus_identifier = 'posts/foundation/object_runtime/';
+var disqus_title = '对象运行时（Object Runtime）';
+var disqus_url = 'https://yhvh009.github.io/posts/foundation/object_runtime/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
