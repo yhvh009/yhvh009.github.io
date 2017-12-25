@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>GCD 线程与队列 · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="最近看到一个文章里面有这么一段话：每个应用都只有一个主线程，但主线程中可能有多个队列，则不仅仅只有主队列。突然发现自己对于线程跟队列这两个概念有些分辨不清，所以在这里重新梳理一下。
+基本概念
+队列：可以理解为一个FIFO的列表，里面装着需要执行的任务。gcd会从队列中取任务，然后放到对应的线程中去执"><meta name="keywords" content="iOS, Apple Foundation, Machine Learning, Algorithm, LeetCode"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/categories/">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>GCD 线程与队列</a></h3></div><div class="post-content"><p>最近看到一个文章里面有这么一段话：每个应用都只有一个主线程，但主线程中可能有多个队列，则不仅仅只有主队列。突然发现自己对于线程跟队列这两个概念有些分辨不清，所以在这里重新梳理一下。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li><p>队列：可以理解为一个FIFO的列表，里面装着需要执行的任务。<br><strong><em>gcd会从队列中取任务，然后放到对应的线程中去执行。</em></strong></p>
+</li>
+<li><p>串行队列与并行队列</p>
+<p>大家都知道gcd中队列分两种：</p>
+<ul>
+<li>串行（主队列 DispatchQueue.main, 默认新建 DispatchQueue(label: “XXX”)）</li>
+<li>并行（全局队列 DispatchQueue.global()，DispatchQueue(label: “XXX”, qos: .default, attributes: .concurrent)）</li>
+</ul>
+</li>
+<li><p>同步与异步<br>同步与异步经常容易跟串行与并行相互混淆。同步异步指的是任务的执行方式；而串行与并行是队列本身的属性。（具体同步异步与串行并行之间的区分在我<a href="../NSOperation">上一篇讲NSOperation</a>的帖子中有，这里就不再赘述了）</p>
+</li>
+</ul>
+<p>所以这么看队列是存储任务的容器，线程当然是真正执行任务的地方。<br>那队列中的任务到底会被分配到什么线程去执行任务呢？</p>
+<ul>
+<li>首先，如果任务是同步执行（sync），则不会开启任何新的线程，跟队列属性（同步异步）无关，任务只会在<strong>当前线程</strong>执行</li>
+<li>如果是异步执行，则会开启新线程，但主队列特殊一些，主队列异步执行仍然是在主线程中执行任务，只是不会阻塞当前线程。</li>
+</ul>
+<p>所以，队列跟任务所执行的线程并无特定关系。除主线程跟主队列特殊一些。我看到的那句话可能是指在主线程中可以create好多个队列来执行任务的意思吧。</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-12-16</span><i class="fa fa-comment-o"></i><a href="/posts/线程与队列/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/categories/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/多线程/" title="多线程">多线程 </a><a class="tag" href="/tags/gcd/" title="gcd">gcd </a><a class="tag" href="/tags/线程/" title="线程">线程 </a><a class="tag" href="/tags/队列/" title="队列">队列 </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://yhvh009.github.io/posts/线程与队列/,阳光夜风,GCD 线程与队列,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/posts/iOS-block高级用法-debounce跟throttle/" title="iOS block高级用法 - debounce跟throttle">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/NSOperation/" title="NSOperation串行并行理解">下一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'yhvh009-github-io';
+var disqus_identifier = 'posts/线程与队列/';
+var disqus_title = 'GCD 线程与队列';
+var disqus_url = 'https://yhvh009.github.io/posts/线程与队列/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
