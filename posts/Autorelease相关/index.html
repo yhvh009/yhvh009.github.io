@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>Autorelease相关 · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="autorelease对象释放时机？
+
+在当前runloop循环结束的时候，runloop会执行objc_autoreleasePoolPop(context)，这个操作才是真正释放autorelease对象的操作（具体实现后面会讲到）。或者是手动的@autoreleasepool{}结束之后，因为"><meta name="keywords" content="iOS, Apple Foundation, Machine Learning, Algorithm, LeetCode"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/categories/">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Autorelease相关</a></h3></div><div class="post-content"><ol>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><li><p>autorelease对象释放时机？</p>
+<blockquote>
+<p>在当前runloop循环结束的时候，runloop会执行objc_autoreleasePoolPop(context)，这个操作才是真正释放autorelease对象的操作（具体实现后面会讲到）。或者是手动的@autoreleasepool{}结束之后，因为编译器会在@autoreleasepool{}的开始跟结束自动加上push跟pop。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">struct __AtAutoreleasePool &#123;</div><div class="line">  __AtAutoreleasePool() &#123;atautoreleasepoolobj = objc_autoreleasePoolPush();&#125;</div><div class="line">  ~__AtAutoreleasePool() &#123;objc_autoreleasePoolPop(atautoreleasepoolobj);&#125;</div><div class="line">  void * atautoreleasepoolobj;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>autorelease原理</p>
+</li>
+</ol>
+<p>autoreleasePool本身是一个双向链表，保存的元素是autoreleasePoolPage对象。<br><img src="http://ww2.sinaimg.cn/mw690/51530583gw1elj2ugt21wj20f109m3zl.jpg" alt="autoreleasePoolPage"><br>（通过其中的parent跟child就能看出整个autoreleasePool是个双向链表）<br>每个autorelease对象会push到poolpage中，next指针指向的是栈顶位置也就是下一个可以存放autorelease对象的位置：<br><img src="http://ww2.sinaimg.cn/mw690/51530583gw1elj5gvphtqj20dy0cx756.jpg" alt=""><br>当调用 [obj autorelease]时，就会把对象放入next的位置。当page满了之后，会开辟一个新的page。<br>每次调用objc_autoreleasePoolPush时，会插入一个哨兵对象（POOL_SENTINEL）到栈顶：<br><img src="http://ww2.sinaimg.cn/large/51530583gw1elj5z7hawej20ji0dewff.jpg" alt=""><br>哨兵对象其实就是一个nil<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define POOL_SENTINEL nil</div></pre></td></tr></table></figure></p>
+<p>当释放autoreleasepool时（即调用objc_autoreleasePoolPop（哨兵对象）），则会依次调用哨兵对象后面对象的release方法，从而实现对象的释放。释放结束之后page就变成：<br><img src="http://ww3.sinaimg.cn/mw690/51530583gw1elj6u2i3fyj20dz0bqdgi.jpg" alt=""></p>
+<ol>
+<li><p>系统如何实现在runloop一次迭代结束时执行objc_autoreleasePoolPop释放autoreleasePool的？</p>
+<blockquote>
+<p>主runloop启动时，系统会add两个observer，分别监听runloop的启动状态（kCFRunLoopEntry）跟即将休眠和退出态（kCFRunLoopBeforeWaiting | kCFRunLoopExit）。在启动的observer回调中执行objc_autoreleasePoolPush操作，在休眠或退出时执行objc_autoreleasePoolPop。</p>
+</blockquote>
+</li>
+<li><p>因为主runloop是在主线程中，那子线程的autorelease对象怎么办？</p>
+<blockquote>
+<p>autoreleasePoolPage内部有一个thread变量来表明当前page所在对象，并且在工作线程中打印当前runloop会发现当前runloop并没有类似的observer来监听runloop的状态，所以可以猜测：<br><strong>所有线程的autoreleasePoolPage都保存在一个双向链表中，所有线程的autorelease对象都会保存在这个链表中对应线程的page中，这个双向链表由主runloop统一管理</strong>（只是一个猜测，没有找到相关的介绍，所以如果哪位了解这块的话跪求讲解）</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>参考：</p>
+<ol>
+<li><a href="http://blog.sunnyxx.com/2014/10/15/behind-autorelease/" target="_blank" rel="external">sunnyxx | 黑幕背后的Autorelease</a></li>
+<li><a href="http://blog.csdn.net/u011619283/article/details/53783650" target="_blank" rel="external">Haley_Wong | RunLoop总结：RunLoop 与GCD 、Autorelease Pool之间的关系</a></li>
+<li><a href="https://draveness.me/autoreleasepool" target="_blank" rel="external">Draveness | 自动释放池的前世今生 —— 深入解析 Autoreleasepool</a></li>
+</ol>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-12-26</span><i class="fa fa-comment-o"></i><a href="/posts/Autorelease相关/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/categories/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/autorelease/" title="autorelease">autorelease </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://yhvh009.github.io/posts/Autorelease相关/,阳光夜风,Autorelease相关,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/iOS-block高级用法-debounce跟throttle/" title="iOS block高级用法 - debounce跟throttle">下一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'yhvh009-github-io';
+var disqus_identifier = 'posts/Autorelease相关/';
+var disqus_title = 'Autorelease相关';
+var disqus_url = 'https://yhvh009.github.io/posts/Autorelease相关/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
