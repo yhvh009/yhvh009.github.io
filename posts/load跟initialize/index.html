@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="阳光夜风"><title>load跟initialize · 阳光夜风</title><!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="description" content="load系统加载load方法大致可以梳理成如下几步：
+
+准备load方法
+递归获取superclass，获取load方法，加入待加载class load方法表（所以父类的load在最前）
+按照category编译顺序加载category中的load方法，加入到另一个待加载category load方"><meta name="keywords" content="iOS, Apple Foundation, Machine Learning, Algorithm, LeetCode"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">阳光夜风</a></h3><div class="description"><p>上善若水 大盈若冲</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/1685261185"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/categories/">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>load跟initialize</a></h3></div><div class="post-content"><h3 id="load"><a href="#load" class="headerlink" title="load"></a>load</h3><p>系统加载load方法大致可以梳理成如下几步：</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><ol>
+<li>准备load方法<ol>
+<li>递归获取superclass，获取load方法，加入待加载class load方法表（所以父类的load在最前）</li>
+<li>按照category编译顺序加载category中的load方法，加入到另一个待加载category load方法表</li>
+</ol>
+</li>
+<li>从头到尾取出class load方法表，获取imp，直接执行（获取的是函数指针imp，所以不走msg_send）</li>
+<li>再取category load方法表，执行。</li>
+</ol>
+<p>所以，可以看出，load方法的执行顺序是 父类 -&gt; 子类 -&gt; category，同时是直接执行imp，不走msg_send，所以也不会执行查找函数方法表的流程，父类子类跟category之间是独立的</p>
+<h3 id="initialize"><a href="#initialize" class="headerlink" title="initialize"></a>initialize</h3><p>跟load不同，initialize的调用时机是第一次使用该类。<br>调用顺序上跟load类似，也是递归父类，但之后是直接调用msg_send（selector）。因为走得是msg_send，所以会查找方法表，所以category会覆盖类的initialize；同时，如果当前类没有实现initialize方法，也会因为查找方法表调用到父类的方法，所以父类initialize方法可能被调用多次。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>总结</th>
+<th>+load</th>
+<th>+initialize</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>调用时机</td>
+<td>被添加到 runtime 时</td>
+<td>收到第一条消息前，可能永远不调用</td>
+</tr>
+<tr>
+<td>调用顺序</td>
+<td>父类-&gt;子类-&gt;分类</td>
+<td>父类-&gt;子类</td>
+</tr>
+<tr>
+<td>调用次数</td>
+<td>1次</td>
+<td>多次</td>
+</tr>
+<tr>
+<td>是否需要显式调用父类实现</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否沿用父类的实现</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>分类中的实现</td>
+<td>类和分类都执行</td>
+<td>覆盖类中的方法，只执行分类的实现</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p>参考：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">hi_xgb | Objective-C 深入理解 +load 和 +initialize</a></li>
+</ol>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-12-27</span><i class="fa fa-comment-o"></i><a href="/posts/load跟initialize/#comments">评论</a><i class="fa fa-tag"></i><a class="tag" href="/categories/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/iOS/" title="iOS">iOS </a><a class="tag" href="/tags/load/" title="load">load </a><a class="tag" href="/tags/initialize/" title="initialize">initialize </a><a class="tag" href="/tags/runtime/" title="runtime">runtime </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://yhvh009.github.io/posts/load跟initialize/,阳光夜风,load跟initialize,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/posts/Bounds/" title="Bounds">下一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'yhvh009-github-io';
+var disqus_identifier = 'posts/load跟initialize/';
+var disqus_title = 'load跟initialize';
+var disqus_url = 'https://yhvh009.github.io/posts/load跟initialize/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
